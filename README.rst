@@ -16,7 +16,7 @@ Usage
     from eve_swagger import swagger
 
     app = Eve()
-    app.register_blueprint(swagger)
+    app.register_blueprint(swagger, url_prefix='/docs')
 
     # You might want to simply update the eve settings module instead.
     SWAGGER = {
@@ -41,11 +41,5 @@ Usage
     if __name__ == '__main__':
         app.run()
 
-When API is up and running, visit the ``/api-docs`` endpoint. The resulting
-JSON can then be used with swagger tooling, like the Swagger Editor:
+When API is up and running, visit the ``/docs/`` endpoint.
 
-.. image:: resources/swagger_editor.png
-
-
-.. _Swagger: http://swagger.io/
-.. _`popular request`: https://github.com/nicolaiarocci/eve/issues/574
