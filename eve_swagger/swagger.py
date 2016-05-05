@@ -8,7 +8,7 @@
     :license: BSD, see LICENSE for more details.
 """
 from collections import OrderedDict
-from flask import Blueprint, jsonify
+from flask import Blueprint, jsonify, render_template
 
 from .objects import info, host, base_path, schemes, consumes, produces, \
     definitions, parameters, responses, security_definitions, security, \
@@ -16,10 +16,17 @@ from .objects import info, host, base_path, schemes, consumes, produces, \
 from .paths import paths
 
 
-swagger = Blueprint('eve_swagger', __name__)
+swagger = Blueprint('swagger', __name__,
+                    template_folder='templates',
+                    static_folder='static')
 
 
-@swagger.route('/api-docs')
+@swagger.route('/')
+def hello():
+    return render_template('index.html')
+
+
+@swagger.route('/swagger.json')
 def index():
     root = OrderedDict()
     root['swagger'] = '2.0'
