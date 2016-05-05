@@ -1,0 +1,2 @@
+recursive-include eve_swagger/static *
+recursive-include eve_swagger/templates *
